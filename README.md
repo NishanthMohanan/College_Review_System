@@ -1,23 +1,20 @@
-### College Review System
+College Review System
 
-# Overview
+A full-stack MERN application where students review colleges, teachers respond, and admins manage the entire platform.
+Built with production-ready practices: authentication, authorization, validation, testing, seeding, and Docker deployment.
 
-The College Review System is a full-stack MERN application that allows students to review colleges, teachers to respond, and admins to manage the platform.
-The project demonstrates authentication, authorization, CRUD operations, validation, testing, and Docker containerization — built for production readiness.
-
-# Tech Stack
-Layer	    Technology
+Tech Stack
+Layer	Technology
 Frontend	React (Vite) + TailwindCSS
-Backend	    Node.js + Express
-Database	MongoDB (Mongoose)
-Authentication	JWT + bcrypt password hashing
+Backend	Node.js + Express
+Database	MongoDB + Mongoose
+Auth	JWT + bcrypt
 Validation	Joi + express-validator
-Testing	    Jest + Supertest
+Testing	Jest + Supertest
 Deployment	Docker + Docker Compose
-Documentation	Postman Collection + README.md
+Docs	Postman Collection + README.md
 
-
-## Folder Structure
+Folder Structure
 exaltt3/
 │
 ├── college-review-backend/
@@ -42,163 +39,151 @@ exaltt3/
 ├── docker-compose.yml
 └── README.md
 
+Installation & Setup
+Prerequisites
 
-# Installation and Setup
+Ensure the following are installed:
 
-## Prerequisites
-
-Install these tools:
 Node.js
-MongoDB Compass
+MongoDB / MongoDB Compass
 Docker Desktop
 Postman
 
-## Setup
+Local Development Setup
+1. Clone repo & setup environment
+cp .env.example .env
+2. Install dependencies
+npm install
+3. Seed sample data
+npm run seed
+4. Run backend & frontend (dev mode)
+npm run dev
+5. Run tests
+npm test
 
-$cp .env.example .env
-$docker-compose.yaml
-$npm install
-$npm run seed
-$npm run dev
-$npm test
+Docker Setup
+Start full application (MongoDB + Backend + Frontend)
+Install Docker Desktop
+Enable WSL (Windows users):
+wsl --install
+wsl --update
 
 
-# Docker Setup 
-
-To start everything (MongoDB + Backend + Frontend):
-1.Install Docker Desktop
-2.PowerShell: 
-wsl--install
-wsl--update
-3.docker compose up --build
-Then visit:
+Build & run:
+docker compose up --build
+Visit:
 Frontend → http://localhost:5173
 Backend → http://localhost:5000/api
+Stop containers
+docker compose down
+Start in detached mode
+docker compose up -d
 
-Stop containers:
-4.docker compose down
-
-Start Docker:
-5.docker compose up -d
-
-
-# Seeding Data
-
-Seed sample users and colleges:
+Seeding Data
+Seed sample users & colleges:
 cd exaltt3
 npm run seed
 
-This creates sample:
-1 Admin, 3 Teacher, 3 Student user
+
+This creates:
+1 Admin
+3 Teachers
+3 Students
 3 Colleges with sample reviews
 
+Authentication & Roles
+JWT-based authentication with bcrypt password hashing.
+Role Permissions
+Role	Permissions
+Admin	Manage users, colleges, reviews
+Teacher	CRUD on reviews for assigned colleges
+Student	CRUD on their own reviews
+JWT tokens are issued on login and verified on protected routes via middleware.
 
-# Authentication Workflow
-
-Role:	Permissions
-Admin:	Full access (manage users, colleges, reviews)
-Teacher:	CRUD on reviews for assigned colleges
-Student:	Can add, edit, delete own reviews
-
-Password hashing uses bcrypt before saving the user.
-JWT tokens are issued upon login and verified on protected routes via middleware.
-
-
-# API Routes Summary
-
+API Route Summary
 Feature	Method	Endpoint	Protected
-Register	POST	/api/auth/register
-Login	POST	/api/auth/login	
-Colleges	GET	/api/colleges	
-College CRUD	POST/PUT/DELETE	/api/colleges/:id
-Reviews	POST/PUT/DELETE	/api/reviews
-Ratings	GET	/api/colleges/:id/reviews	
-
-
-# Running Tests
-
-We use Jest + Supertest for integration testing.
+Register	POST	/api/auth/register	❌
+Login	POST	/api/auth/login	❌
+Get Colleges	GET	/api/colleges	❌
+College CRUD	POST/PUT/DELETE	/api/colleges/:id	✔️
+Review CRUD	POST/PUT/DELETE	/api/reviews	✔️
+College Ratings	GET	/api/colleges/:id/reviews	❌
+Testing (Jest + Supertest)
 
 Run all tests:
-cd exaltt3
 npm test
+Test Environment
+Uses mongodb-memory-server
 
-Test Environment:
-
-Uses mongodb-memory-server 
-
-Test Files:
+Integration test files:
 src/tests/auth.test.js
 src/tests/review.test.js
 src/tests/setupTestDB.js
 
-
-# Postman Collection
-
-Import exaltt3/college-review-system/postman_collection.json
-
-This includes:
-Auth endpoints
-College endpoints
-Review endpoints
-
-Example tokens for each role
-
-
-# Test Coverage Output
-After running npm test, coverage summary appears in console.
-
-You can generate a detailed report:
+Test Coverage Report
 npx jest --coverage
 
-Output is saved under:
+
+Output stored in:
 college-review-backend/coverage/
+Postman Collection
+
+Import:
+exaltt3/college-review-system/postman_collection.json
 
 
-# Seed Script
+Includes:
 
-Path: college-review-backend/seed/seed.js
+Auth routes
+College routes
+Review routes
+Example tokens for all roles
+Seed Script Details
+
+Path:
+college-review-backend/seed/seed.js
+
 
 The script:
-Connects to MongoDB
-Clears old data
-Inserts sample colleges, users, and reviews
-Prints credentials for testing
 
-Run it manually:
+Connects to DB
+Clears existing data
+Inserts sample users, colleges, reviews
+Prints test credentials
+
+Run manually:
+
 npm run seed
 
+Production Readiness
+Area	Approach
+Security	Helmet, JWT Auth, bcrypt hashing
+Scalability	Modular architecture
+Validation	Joi + express-validator
+Testing	Jest + Supertest
+Deployment	Docker Compose (3 services)
+Logging	Morgan
+Performance	Lean queries, indexes
 
-# Production Readiness
-Area	    Approach
-Security	Helmet middleware, JWT Auth, bcrypt hashing
-Scalability	Modular route/controller structure
-Validation	Joi + express-validator for strong input validation
-Testing	    Jest + Supertest coverage
-Deployment	Docker Compose (backend, frontend, Mongo)
-Logging	    Morgan integrated for HTTP logging
-Performance	Mongoose indexes and lean queries
+Example App Workflow
 
+User registers → /api/auth/register
+Logs in → receives JWT
+Sends JWT in Authorization header
+Student posts review → /api/reviews
+Admin views or manages colleges → /api/colleges
 
-# Example Workflow
+Key Learnings
 
-User Registration → /api/auth/register
-Login → JWT token received
-Token attached → Authorization Header
-Student adds review → /api/reviews
-Admin views college ratings → /api/colleges
-
-
-# Key Learning Points
-
-Modular Express backend architecture
-Secure password storage
-Automated integration testing
-Docker-based environment consistency
+MERN full-stack architecture
+Authentication + Authorization
+Secure password hashing
+Integration testing with Jest
+Docker-based deployment
 Aggregation pipelines for average ratings
+Clean MVC structure
 
-
-# Author
-Nishanth
-
-[nishanthmohanannair@gmail.com]
+Author
+Nishanth M
+nishanthmohanannair@gmail.com
+https://github.com/NishanthMohanan
