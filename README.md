@@ -1,20 +1,27 @@
-College Review System
+#  College Review System
 
-A full-stack MERN application where students review colleges, teachers respond, and admins manage the entire platform.
+A full-stack MERN application where students review colleges, teachers respond, and admins manage the platform.  
 Built with production-ready practices: authentication, authorization, validation, testing, seeding, and Docker deployment.
 
-Tech Stack
-Layer	Technology
-Frontend	React (Vite) + TailwindCSS
-Backend	Node.js + Express
-Database	MongoDB + Mongoose
-Auth	JWT + bcrypt
-Validation	Joi + express-validator
-Testing	Jest + Supertest
-Deployment	Docker + Docker Compose
-Docs	Postman Collection + README.md
+---
 
-Folder Structure
+##  Tech Stack
+
+| Layer        | Technology |
+|--------------|------------|
+| **Frontend** | React (Vite) + TailwindCSS |
+| **Backend**  | Node.js + Express |
+| **Database** | MongoDB + Mongoose |
+| **Auth**     | JWT + bcrypt |
+| **Validation** | Joi + express-validator |
+| **Testing** | Jest + Supertest |
+| **Deployment** | Docker + Docker Compose |
+| **Docs** | Postman Collection + README.md |
+
+---
+
+##  Folder Structure
+```bash
 exaltt3/
 │
 ├── college-review-backend/
@@ -187,3 +194,4 @@ Author
 Nishanth M
 nishanthmohanannair@gmail.com
 https://github.com/NishanthMohanan
+
