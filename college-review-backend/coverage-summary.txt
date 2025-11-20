@@ -1,0 +1,35 @@
+
+> college-review-backend@1.0.0 test
+> cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand --detectOpenHandles --coverage
+
+[0mPOST /api/auth/register [32m201[0m 182.852 ms - 353[0m
+[0mPOST /api/reviews [32m201[0m 61.689 ms - 312[0m
+[0mGET /api/reviews/college/69072afe25de927af1227b65 [32m200[0m 35.054 ms - 361[0m
+[0mPUT /api/reviews/69072afe25de927af1227b69 [32m200[0m 36.737 ms - 315[0m
+[0mDELETE /api/reviews/69072afe25de927af1227b69 [32m200[0m 26.469 ms - 41[0m
+[0mPOST /api/auth/register [32m201[0m 184.894 ms - 350[0m
+[0mPOST /api/auth/login [32m200[0m 110.845 ms - 338[0m
+-----------------------|---------|----------|---------|---------|-------------------------------
+File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s             
+-----------------------|---------|----------|---------|---------|-------------------------------
+All files              |   66.13 |    38.66 |   56.52 |   73.37 |                               
+ src                   |     100 |      100 |     100 |     100 |                               
+  app.js               |     100 |      100 |     100 |     100 |                               
+ src/controllers       |   57.62 |    35.29 |   53.84 |      67 |                               
+  authController.js    |   72.72 |       50 |     100 |   85.71 | 42-43,70-71                   
+  collegeController.js |    28.2 |    14.28 |   16.66 |   33.33 | 14-22,27-28,33-35,40-49,54-60 
+  reviewController.js  |   71.73 |    40.74 |      80 |   82.05 | 38-51,74,94                   
+ src/middleware        |      52 |    35.71 |      40 |   54.16 |                               
+  authMiddleware.js    |    64.7 |       50 |   66.66 |   68.75 | 13,22,29-32                   
+  errorMiddleware.js   |      25 |        0 |       0 |      25 | 2-4,8-10                      
+ src/models            |   88.23 |       50 |   66.66 |   93.75 |                               
+  collegeModel.js      |     100 |      100 |     100 |     100 |                               
+  reviewModel.js       |     100 |      100 |     100 |     100 |                               
+  userModel.js         |   83.33 |       50 |   66.66 |    90.9 | 44                            
+ src/routes            |     100 |      100 |     100 |     100 |                               
+  authRoutes.js        |     100 |      100 |     100 |     100 |                               
+  collegeRoutes.js     |     100 |      100 |     100 |     100 |                               
+  reviewRoutes.js      |     100 |      100 |     100 |     100 |                               
+ src/tests             |     100 |    66.66 |     100 |     100 |                               
+  setupTestDB.js       |     100 |    66.66 |     100 |     100 | 10-18                         
+-----------------------|---------|----------|---------|---------|-------------------------------

@@ -1,0 +1,204 @@
+{
+  "info": {
+    "name": "College Review Backend",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "Postman collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"student\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Colleges",
+      "item": [
+        {
+          "name": "Create College",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ABC University\",\n  \"location\": \"New York\",\n  \"description\": \"Top-ranked university\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/colleges",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges"]
+            }
+          }
+        },
+        {
+          "name": "Get All Colleges",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/colleges",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges"]
+            }
+          }
+        },
+        {
+          "name": "Get College by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/colleges/{{collegeId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges", "{{collegeId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update College",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/colleges/{{collegeId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges", "{{collegeId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete College",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/colleges/{{collegeId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges", "{{collegeId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "Create Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Excellent\",\n  \"comment\": \"Loved it!\",\n  \"rating\": 5,\n  \"collegeId\": \"{{collegeId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews"]
+            }
+          }
+        },
+        {
+          "name": "Get Reviews by College",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/reviews/college/{{collegeId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews", "college", "{{collegeId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Review",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Updated review comment\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reviews/{{reviewId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews", "{{reviewId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Review",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/reviews/{{reviewId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews", "{{reviewId}}"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" },
+    { "key": "collegeId", "value": "" },
+    { "key": "reviewId", "value": "" }
+  ]
+}

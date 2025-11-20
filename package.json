@@ -1,0 +1,26 @@
+{
+  "name": "exaltt3",
+  "version": "1.0.0",
+  "description": "College Review System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:backend dev:frontend",
+    "dev:backend": "cd college-review-backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start": "docker-compose up --build",
+    "seed": "cd college-review-backend && npm run seed",
+    "test": "cd college-review-backend && npm test",
+    "install-all": "npm install && cd frontend && npm install && cd ../college-review-backend && npm install && cd ..",
+    "docker:reset": "docker-compose down -v && docker-compose up -d --build && docker exec -it exaltt3-backend npm run seed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "mongoose": "^8.19.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
