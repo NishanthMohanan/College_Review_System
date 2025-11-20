@@ -9,7 +9,7 @@ The project demonstrates authentication, authorization, CRUD operations, validat
 Layer	    Technology
 Frontend	React (Vite) + TailwindCSS
 Backend	    Node.js + Express
-Database	MongoDB (Mongoose ODM)
+Database	MongoDB (Mongoose)
 Authentication	JWT + bcrypt password hashing
 Validation	Joi + express-validator
 Testing	    Jest + Supertest
@@ -200,4 +200,5 @@ Aggregation pipelines for average ratings
 
 # Author
 Nishanth
+
 [nishanthmohanannair@gmail.com]
