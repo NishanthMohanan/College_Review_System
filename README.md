@@ -109,12 +109,12 @@ JWT tokens are issued on login and verified on protected routes via middleware.
 
 API Route Summary
 Feature	Method	Endpoint	Protected
-Register	POST	/api/auth/register	❌
-Login	POST	/api/auth/login	❌
-Get Colleges	GET	/api/colleges	❌
-College CRUD	POST/PUT/DELETE	/api/colleges/:id	✔️
-Review CRUD	POST/PUT/DELETE	/api/reviews	✔️
-College Ratings	GET	/api/colleges/:id/reviews	❌
+Register	POST	/api/auth/register	
+Login	POST	/api/auth/login	
+Get Colleges	GET	/api/colleges	
+College CRUD	POST/PUT/DELETE	/api/colleges/:id	
+Review CRUD	POST/PUT/DELETE	/api/reviews	
+College Ratings	GET	/api/colleges/:id/reviews	
 Testing (Jest + Supertest)
 
 Run all tests:
@@ -192,6 +192,6 @@ Clean MVC structure
 
 Author
 Nishanth M
-nishanthmohanannair@gmail.com
-https://github.com/NishanthMohanan
+
+
 
