@@ -16,7 +16,6 @@ Built with production-ready practices: authentication, authorization, validation
 | **Validation** | Joi + express-validator |
 | **Testing** | Jest + Supertest |
 | **Deployment** | Docker + Docker Compose |
-| **Docs** | Postman Collection + README.md |
 
 ---
 
@@ -192,6 +191,7 @@ Clean MVC structure
 
 Author
 Nishanth M
+
 
 
 
