@@ -1,197 +1,255 @@
-#  College Review System
+# College Review System — Production-Ready MERN Application
 
-A full-stack MERN application where students review colleges, teachers respond, and admins manage the platform.  
-Built with production-ready practices: authentication, authorization, validation, testing, seeding, and Docker deployment.
+A scalable, production-ready full-stack MERN application where students can review colleges, teachers can respond, and administrators can manage the platform with full access control.
 
----
+This system was designed using enterprise backend practices including modular architecture, secure authentication, role-based authorization, validation, testing, and containerized deployment.
 
-##  Tech Stack
-
-| Layer        | Technology |
-|--------------|------------|
-| **Frontend** | React (Vite) + TailwindCSS |
-| **Backend**  | Node.js + Express |
-| **Database** | MongoDB + Mongoose |
-| **Auth**     | JWT + bcrypt |
-| **Validation** | Joi + express-validator |
-| **Testing** | Jest + Supertest |
-| **Deployment** | Docker + Docker Compose |
+This project demonstrates real-world backend and full-stack engineering capability.
 
 ---
 
-##  Folder Structure
-```bash
+## Core Features
+
+Authentication and secure login system  
+Role-Based Access Control (Admin, Teacher, Student)  
+College review and rating system  
+Teacher response system  
+Admin management dashboard support  
+RESTful API architecture  
+Secure password hashing and JWT authentication  
+Production-ready backend structure  
+Containerized deployment using Docker  
+
+---
+
+## Technology Stack
+
+| Layer | Technology |
+|------|------------|
+| Frontend | React + Vite + TailwindCSS |
+| Backend | Node.js + Express |
+| Database | MongoDB + Mongoose |
+| Authentication | JWT + bcrypt |
+| Validation | Joi + express-validator |
+| Testing | Jest + Supertest |
+| Deployment | Docker + Docker Compose |
+
+---
+
+## System Architecture
+
+This application follows modular MVC architecture.
+
 exaltt3/
 │
 ├── college-review-backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── middleware/
-│   │   ├── utils/
-│   │   └── tests/
-│   ├── seed/
-│   ├── .env.example
-│   ├── Dockerfile
-│   └── package.json
+│ ├── src/
+│ │ ├── controllers/ # Business logic
+│ │ ├── models/ # Database schemas
+│ │ ├── routes/ # API routes
+│ │ ├── middleware/ # Auth, validation, error handling
+│ │ ├── utils/ # Helpers and utilities
+│ │ └── tests/ # Integration tests
+│ │
+│ ├── seed/ # Database seed scripts
+│ ├── Dockerfile
+│ └── package.json
 │
 ├── frontend/
-│   ├── src/
-│   ├── public/
-│   ├── Dockerfile
-│   └── package.json
+│ ├── src/
+│ ├── public/
+│ └── Dockerfile
 │
 ├── docker-compose.yml
 └── README.md
 
-Installation & Setup
-Prerequisites
 
-Ensure the following are installed:
+---
 
-Node.js
-MongoDB / MongoDB Compass
-Docker Desktop
-Postman
+## Authentication and Authorization
 
-Local Development Setup
-1. Clone repo & setup environment
+Secure authentication is implemented using JWT tokens and bcrypt password hashing.
+
+Role-based permissions:
+
+Admin  
+• Manage users  
+• Manage colleges  
+• Manage reviews  
+
+Teacher  
+• View assigned colleges  
+• Respond to reviews  
+
+Student  
+• Create reviews  
+• Edit own reviews  
+• View colleges  
+
+All protected routes require JWT verification middleware.
+
+---
+
+## API Overview
+
+Authentication
+
+POST /api/auth/register  
+POST /api/auth/login  
+
+Colleges
+
+GET /api/colleges  
+POST /api/colleges  
+PUT /api/colleges/:id  
+DELETE /api/colleges/:id  
+
+Reviews
+
+POST /api/reviews  
+PUT /api/reviews/:id  
+DELETE /api/reviews/:id  
+GET /api/colleges/:id/reviews  
+
+---
+
+## Installation and Setup
+
+### Prerequisites
+
+Node.js  
+MongoDB  
+Docker  
+Postman  
+
+---
+
+### Local Development Setup
+
+Clone repository:
+
+git clone https://github.com/NishanthMohanan/College_Review_System.git
+
+
+Create environment file:
+
 cp .env.example .env
-2. Install dependencies
+
+
+Install dependencies:
+
 npm install
-3. Seed sample data
+
+
+Seed database:
+
 npm run seed
-4. Run backend & frontend (dev mode)
+
+
+Start development servers:
+
 npm run dev
-5. Run tests
-npm test
-
-Docker Setup
-Start full application (MongoDB + Backend + Frontend)
-Install Docker Desktop
-Enable WSL (Windows users):
-wsl --install
-wsl --update
 
 
-Build & run:
+---
+
+## Docker Deployment
+
+Start full application stack:
+
 docker compose up --build
-Visit:
-Frontend → http://localhost:5173
-Backend → http://localhost:5000/api
-Stop containers
+
+
+Access services:
+
+Frontend  
+http://localhost:5173  
+
+Backend API  
+http://localhost:5000/api  
+
+Stop containers:
+
 docker compose down
-Start in detached mode
-docker compose up -d
-
-Seeding Data
-Seed sample users & colleges:
-cd exaltt3
-npm run seed
 
 
-This creates:
-1 Admin
-3 Teachers
-3 Students
-3 Colleges with sample reviews
+---
 
-Authentication & Roles
-JWT-based authentication with bcrypt password hashing.
-Role Permissions
-Role	Permissions
-Admin	Manage users, colleges, reviews
-Teacher	CRUD on reviews for assigned colleges
-Student	CRUD on their own reviews
-JWT tokens are issued on login and verified on protected routes via middleware.
+## Testing
 
-API Route Summary
-Feature	Method	Endpoint	Protected
-Register	POST	/api/auth/register	
-Login	POST	/api/auth/login	
-Get Colleges	GET	/api/colleges	
-College CRUD	POST/PUT/DELETE	/api/colleges/:id	
-Review CRUD	POST/PUT/DELETE	/api/reviews	
-College Ratings	GET	/api/colleges/:id/reviews	
-Testing (Jest + Supertest)
+Integration tests implemented using Jest and Supertest.
 
-Run all tests:
+Run tests:
+
 npm test
-Test Environment
-Uses mongodb-memory-server
-
-Integration test files:
-src/tests/auth.test.js
-src/tests/review.test.js
-src/tests/setupTestDB.js
-
-Test Coverage Report
-npx jest --coverage
 
 
-Output stored in:
-college-review-backend/coverage/
-Postman Collection
+---
 
-Import:
-exaltt3/college-review-system/postman_collection.json
+## Database Seeding
 
+Seed script automatically creates:
 
-Includes:
-
-Auth routes
-College routes
-Review routes
-Example tokens for all roles
-Seed Script Details
-
-Path:
-college-review-backend/seed/seed.js
-
-
-The script:
-
-Connects to DB
-Clears existing data
-Inserts sample users, colleges, reviews
-Prints test credentials
+Admin account  
+Teacher accounts  
+Student accounts  
+Sample colleges  
+Sample reviews  
 
 Run manually:
 
 npm run seed
 
-Production Readiness
-Area	Approach
-Security	Helmet, JWT Auth, bcrypt hashing
-Scalability	Modular architecture
-Validation	Joi + express-validator
-Testing	Jest + Supertest
-Deployment	Docker Compose (3 services)
-Logging	Morgan
-Performance	Lean queries, indexes
 
-Example App Workflow
+---
 
-User registers → /api/auth/register
-Logs in → receives JWT
-Sends JWT in Authorization header
-Student posts review → /api/reviews
-Admin views or manages colleges → /api/colleges
+## Security Implementation
 
-Key Learnings
+JWT authentication  
+Password hashing using bcrypt  
+Route protection middleware  
+Input validation  
+Secure headers  
+Environment variable protection  
 
-MERN full-stack architecture
-Authentication + Authorization
-Secure password hashing
-Integration testing with Jest
-Docker-based deployment
-Aggregation pipelines for average ratings
-Clean MVC structure
+---
 
-Author
-Nishanth M
+## Production-Ready Engineering Practices
 
+Modular architecture  
+Separation of concerns  
+Reusable middleware  
+Containerized deployment  
+Integration testing  
+Environment-based configuration  
 
+---
 
+## Example Workflow
 
+User registers account  
+User logs in and receives JWT token  
+Student creates review  
+Teacher responds to review  
+Admin manages colleges and users  
+
+---
+
+## Project Purpose
+
+This project demonstrates:
+
+Production-ready backend architecture  
+Full-stack MERN development  
+Authentication and authorization implementation  
+Database schema design  
+REST API development  
+Docker-based deployment  
+
+This architecture can be reused for building scalable SaaS or enterprise applications.
+
+---
+
+## Author
+
+Nishanth M  
