@@ -60,29 +60,6 @@ All protected routes require JWT verification middleware.
 
 ---
 
-## API Overview
-
-Authentication
-
-POST /api/auth/register  
-POST /api/auth/login  
-
-Colleges
-
-GET /api/colleges  
-POST /api/colleges  
-PUT /api/colleges/:id  
-DELETE /api/colleges/:id  
-
-Reviews
-
-POST /api/reviews  
-PUT /api/reviews/:id  
-DELETE /api/reviews/:id  
-GET /api/colleges/:id/reviews  
-
----
-
 ## Installation and Setup
 
 ### Prerequisites
@@ -131,12 +108,6 @@ docker compose up --build
 
 
 Access services:
-
-Frontend  
-http://localhost:5173  
-
-Backend API  
-http://localhost:5000/api  
 
 Stop containers:
 
@@ -223,4 +194,5 @@ This architecture can be reused for building scalable SaaS or enterprise applica
 ## Author
 
 Nishanth M  
+
 
