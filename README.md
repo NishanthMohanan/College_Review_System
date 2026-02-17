@@ -36,36 +36,6 @@ Containerized deployment using Docker
 
 ---
 
-## System Architecture
-
-This application follows modular MVC architecture.
-
-exaltt3/
-│
-├── college-review-backend/
-│ ├── src/
-│ │ ├── controllers/ # Business logic
-│ │ ├── models/ # Database schemas
-│ │ ├── routes/ # API routes
-│ │ ├── middleware/ # Auth, validation, error handling
-│ │ ├── utils/ # Helpers and utilities
-│ │ └── tests/ # Integration tests
-│ │
-│ ├── seed/ # Database seed scripts
-│ ├── Dockerfile
-│ └── package.json
-│
-├── frontend/
-│ ├── src/
-│ ├── public/
-│ └── Dockerfile
-│
-├── docker-compose.yml
-└── README.md
-
-
----
-
 ## Authentication and Authorization
 
 Secure authentication is implemented using JWT tokens and bcrypt password hashing.
@@ -253,3 +223,4 @@ This architecture can be reused for building scalable SaaS or enterprise applica
 ## Author
 
 Nishanth M  
+
