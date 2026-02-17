@@ -75,7 +75,7 @@ Postman
 
 Clone repository:
 
-git clone https://github.com/NishanthMohanan/College_Review_System.git
+git clone https://github.com/NishanthMohanan/college-review-system.git
 
 
 Create environment file:
@@ -194,5 +194,6 @@ This architecture can be reused for building scalable SaaS or enterprise applica
 ## Author
 
 Nishanth M  
+
 
 
